@@ -1,0 +1,14 @@
+void Awake()
+    {
+        playerSprite = GetComponent<SpriteRenderer>();
+        rBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        juIn = Input.GetAxis("Jump");
+        horiIn = Input.GetAxis("Horizontal");
+        var halfHt = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
+        groundCheck = Phy2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHt - 0.04f), Vector2.down, 0.025f);
+    }
